@@ -1,4 +1,4 @@
-print("MEDICAL INFUSION RATE CALCULATOR")
+print("IV INFUSION MCG/KG/H RATE CALCULATOR")
 print("=================================")
 
 while True:
