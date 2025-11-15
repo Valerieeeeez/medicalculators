@@ -1,0 +1,42 @@
+import math
+
+print("IV ANTIBIOTICS CALCULATOR")
+print("=================================")
+
+def round_up_to_nearest_ten(num):
+    return math.ceil(num / 10) * 10
+
+while True:
+    print("\nEnter the values:")
+
+    prescribed = float(input("Prescribed Medication Amount from doctor (mg): "))
+    stock = float(input("Stock Medication Amount (mg per vial): "))
+    volume_after_reconstitution = float(input("Volume of medication after reconstitution (ml): "))
+
+    # --- First calculations ---
+    fraction = prescribed / stock
+    amount_to_draw = volume_after_reconstitution * fraction
+
+    # --- Display early results ---
+    print("\nCALCULATED SO FAR:")
+    print(f"Fraction of dose relative to stock: {fraction:.5f}")
+    print(f"Amount to draw up: {amount_to_draw:.5f} ml")
+
+    # Now get diluent input after confirming fraction
+    added_diluent = float(input("\nAdditional diluent added after drawing medication (ml): "))
+
+    # --- Continue calculations ---
+    final_volume = amount_to_draw + added_diluent
+    final_volume_rounded = round(final_volume)
+    infusion_rate = final_volume_rounded * 2
+    concentration = prescribed / final_volume_rounded
+
+    # --- Final Output ---
+    print("\nFINAL RESULTS:")
+    print(f"Final volume after dilution (rounded): {final_volume_rounded} ml")
+    print(f"Infusion Rate: {infusion_rate:.5f} ml/h")
+    print(f"Concentration: {concentration:.5f} mg/ml")
+
+    again = input("\nAnother calculation? (y/n): ").lower()
+    if again != 'y':
+        break
