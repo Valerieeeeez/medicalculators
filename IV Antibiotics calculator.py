@@ -26,10 +26,12 @@ while True:
     # Now get diluent input after confirming fraction
     saline_to_add = (fraction * saline_denominator) - amount_to_draw
     print(f"Saline to add: {saline_to_add}")
+    
+    saline_flush = float(input("Volume of saline used for flushing (ml): "))
 
     # --- Continue calculations ---
     final_volume_rounded = round_up_to_nearest_ten(fraction * saline_denominator)
-    infusion_rate = final_volume_rounded + 25
+    infusion_rate = final_volume_rounded + saline_flush
     concentration = prescribed / final_volume_rounded
 
     print(f"Final volume after dilution (rounded): {final_volume_rounded} ml")
